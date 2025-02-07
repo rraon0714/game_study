@@ -17,6 +17,17 @@ namespace Project2
 
         public int CalculateDamage(character attacker, monster defender)
         {
+            // 데미지 계산
+            // attacker, defender
+            // (때린애 공격력 - 맞은애 방어력) * 속성 상성
+
+            int atk = attacker.character_atk;
+            int def = defender.monster_def;
+            int basicDamage = atk - def;
+
+            double additionalAttributeDamage = GetAdditionalAttributeDagmage(attacker.Character_Attribute, defender.monster_Attribute);
+
+
             if (attacker.Character_Attribute == Attribute.Fire && defender.monster_Attribute == Attribute.Wind)
                 damage = 1.5;
             else if (attacker.Character_Attribute == Attribute.Fire && defender.monster_Attribute == Attribute.Water)
@@ -43,6 +54,11 @@ namespace Project2
                 damage = 0.5;
             else
                 damage = 1;
+        }
+
+        private double GetAdditionalAttributeDagmage(Attribute character_Attribute, Attribute monster_Attribute)
+        {
+            throw new NotImplementedException();
         }
     }
 
