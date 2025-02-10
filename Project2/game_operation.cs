@@ -70,8 +70,8 @@ namespace Project2
             else
                 return 1;
         }
-        
-    
+
+
 
         //public void npc_Attack(monster target, int attack_power)
         //{

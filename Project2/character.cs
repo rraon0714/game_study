@@ -42,7 +42,19 @@ namespace Project2
         //    int damage = Calculate_Damage(target, Attack_Power);
         //}
 
-        
+        // 등록된 몬스터들을 순서대로 공격
+        // 인덱스 넘버링에 의해 자동적으로 순서에 맞게 적용 
+        // 
+
+
+
+        public void registerMonsterAttack(character attacker , monster defender)
+        {
+            for (int i = 0; i < defender.hpData[i]; i++)
+            {
+
+            }
+        }
     }
 }
 

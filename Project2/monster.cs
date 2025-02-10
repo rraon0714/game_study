@@ -11,13 +11,13 @@ namespace Project2
 {
     public class monster : Actor
     {
-        public string[] monster_nameData = new string[10];
-        public int[] monster_hpData = new int[10];
-        public int[] monster_atkData = new int[10];
-        public int[] monster_defData = new int[10];
+        public string monster_nameData;
+        public int monster_hpData;
+        public int monster_atkData;
+        public int monster_defData;
         public Attribute monster_Attribute;
 
-        public monster(string[] name, int[] hp, int[] atk, int[] def, Attribute Attribute)
+        public monster(string name, int hp, int atk, int def, Attribute Attribute)
         {
             Console.WriteLine($"{name}, {hp}, {atk} , {def} {Attribute}");
             monster_nameData = name;
@@ -46,15 +46,20 @@ namespace Project2
             throw new NotImplementedException();
         }
 
-        public void highHP ()
+        // 현재 등록된 몬스터들 중 생명력이 가장 높은 몬스터 이름 출력
+        // hpdata끼리 비교했을 때 해당하는 name data 인덱스의 이름 출력?
+        // hpdata 비교를 끝내고 인덱스 넘버를 출력 -> 
+        public void MonsterMaximumHpPrint()
         {
-            for (int i = 0; i< monster_hpData.Length; i++)
+            for (int i = 0; i < hpData.Length; i++)
             {
-                for(int j = 0; j< hpData.Length; j++)
+                for (int j = 0; j < hpData.Length; j++)
                 {
-                    if(monster_hpData[i] > hpData[j])
+                    if (hpData[i] > hpData[j])
                     {
-                        
+                        int maximum = hpData[i];
+                        string maxnumber= nameData[maximum]; 
+                        Console.WriteLine($"{maximum}");
                     }
 
                 }
