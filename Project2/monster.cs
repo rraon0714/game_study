@@ -47,23 +47,32 @@ namespace Project2
         }
 
         // 현재 등록된 몬스터들 중 생명력이 가장 높은 몬스터 이름 출력
+        // hpdata 0~9까지 비교 -> 변수 생성
         // hpdata끼리 비교했을 때 해당하는 name data 인덱스의 이름 출력?
-        // hpdata 비교를 끝내고 인덱스 넘버를 출력 -> 
+        // hpdata 비교를 끝내고 인덱스 넘버를 출력 
+        // index number와 nameData 같은 인덱스와 일치
+
         public void MonsterMaximumHpPrint()
         {
+            int maxHp = 0;
+            int maxIndex = 0;
+
+
+
             for (int i = 0; i < hpData.Length; i++)
             {
-                for (int j = 0; j < hpData.Length; j++)
+                for (int j = 1; j < hpData.Length; j++)
                 {
                     if (hpData[i] > hpData[j])
                     {
-                        int maximum = hpData[i];
-                        string maxnumber= nameData[maximum]; 
-                        Console.WriteLine($"{maximum}");
+                        maxHp = hpData[i];
+                        maxIndex = i;
+                        
                     }
-
                 }
+                
             }
+
         }
     }
 }

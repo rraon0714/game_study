@@ -96,7 +96,7 @@ class game
         int[] defData = { 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 };
         string[] nameData = { "고블린", "오크", "슬라임", "트롤", "드래곤", "스켈리톤", "오우거", "monster8", "monster9", "monster10" };
 
-        Arena arena2 = new Arena(8);
+        Arena arena2 = new Arena(10);
 
         for (int i = 0; i < nameData.Length; ++i)
         {

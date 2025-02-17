@@ -76,8 +76,6 @@ namespace Project2
             // 여섯번째 몬스터가 들어왔을 때
             // monsters[5] = mon;
             // 더이상 들어갈  자리가 없어서 return false를 해주자.
-
-
             return true;
         }
 
@@ -164,7 +162,7 @@ namespace Project2
 
         // 생명력 출력: 생명력이 0이 되면 맨 마지막에 등록된 몬스터 이름을 출력하는 함수 생성
         // 마지막 인덱스의 이름 출력
-        // 
+        
         public void lastMonsterNamePrint(monster monster)
         {
             for (int i = 0; i < monsters.Length; i++)
