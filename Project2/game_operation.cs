@@ -15,7 +15,10 @@ namespace Project2
         monster monster;
         Boolean gameProgress = false;
 
-
+        public static int Calculate_Damage(character attacker, monster defender)
+        {
+            throw new NotImplementedException();
+        }
 
         public int CalculateDamage(Actor attacker, Actor defender)
         {

@@ -17,7 +17,7 @@ namespace Project2
         int mosterAddSelection;
 
         //Monster 등록: 상속을 통해 Monster 등록(예: 고블린, 오크, 슬라임) (check)
-        //생명력 출력: 생명력이 0이 되면 맨 마지막에 등록된 몬스터 이름을 출력하는 함수 생성
+        //생명력 출력: 생명력이 0이 되면 맨 마지막에 등록된 몬스터 이름을 출력하는 함수 생성 (check)
         //몬스터의 생명력이 0 이하이면 몬스터는 아레나에서 사라짐 (check)
         //공격 함수: 몬스터 등록된 순서대로 각각 한 대씩 공격하는 함수 생성(예: 고블린 -> 오크 -> 슬라임 -> 고블린...)
         //현재 등록된 몬스터들 중 생명력이 가장 높은 몬스터 이름 출력 (check)
@@ -35,6 +35,7 @@ namespace Project2
         public monster[] monsters;
         public int index;
         public int monsterCount;
+        public int lastMonsterName;
 
         public Arena(int monsterCount)
         {
@@ -151,28 +152,26 @@ namespace Project2
             return monsterCount;
         }
 
+        // 남아있는 몬스터 수 출력
         public void remainigMonsters(monster monster)
         {
-            for(int i = 0; i < monsters.Length;i++)
-            {
-                Console.WriteLine("현재 남은 몬스터의 수는" + $"{monsters[i]}입니다.");
-            }
+            Console.WriteLine("현재 남은 몬스터의 수는" + $"{monsterCount}입니다.");
+
         }
 
 
-        // 생명력 출력: 생명력이 0이 되면 맨 마지막에 등록된 몬스터 이름을 출력하는 함수 생성
-        // 마지막 인덱스의 이름 출력
-        
-        public void lastMonsterNamePrint(monster monster)
+        // 생명력 출력: 캐릭터 생명력이 0이 되면 맨 마지막에 등록된 몬스터 이름을 출력하는 함수 생성
+        // 캐릭터 생명력이 0일 경우
+        // nameData에 속한 맨마지막에 있는 인덱스 출력
+         
+
+        public void lastMonsterNamePrint(monster monster, character character)
         {
-            for (int i = 0; i < monsters.Length; i++)
-            {
-                if (monsters[i].hpData[i] == 0)
+                if (character.character_hp == 0)
                 {
-                    monsters[i] = null;
-                    monsterCount -= 1;
+                    lastMonsterName = monster.monster_nameData.Length - 1;
                 }
-            }
+                Console.WriteLine($"마지막 몬스터의 이름은 {lastMonsterName}입니다.");
         }
 
         

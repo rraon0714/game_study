@@ -18,6 +18,7 @@ namespace Project2
         public int character_def;
         public Attribute Character_Attribute;
 
+
         public static string game_character_Attribute { get; internal set; }
 
         public character(string name, int hp, int def, int atk, Attribute attribute)
@@ -30,6 +31,7 @@ namespace Project2
             Character_Attribute = attribute;
         }        
 
+        //캐릭터가 받는 피해량 설정
         public void TakeDamage(int damage)
         {
             character_hp -= damage;
@@ -44,12 +46,14 @@ namespace Project2
 
         // 등록된 몬스터들을 순서대로 공격
         // 인덱스 넘버링에 의해 자동적으로 순서에 맞게 적용 
-        
+        // 고블린-> 오크 -> 슬라임-> 고블린
+        // 전부 다 때리려면 저장된 배열
+
         public void registerMonsterAttack(character attacker , monster defender)
         {
             for (int i = 0; i < defender.hpData[i]; i++)
             {
-
+                int damage = game_operation.Calculate_Damage(attacker, defender);
             }
         }
     }
