@@ -47,7 +47,7 @@ namespace Project2
             //monsterAttribute monsterAttribute = (monsterAttribute)random.Next(Enum.GetValues(typeof(monsterAttribute)).Length);
         }
 
-        public bool AddMonster(monster mon)
+        public bool AddMonster(monster mon) 
         {
             if (monsters.Length <= index)
             {
@@ -174,7 +174,40 @@ namespace Project2
                 Console.WriteLine($"마지막 몬스터의 이름은 {lastMonsterName}입니다.");
         }
 
+
+        // 등록된 몬스터들을 순서대로 공격
+        // 인덱스 넘버링에 의해 자동적으로 순서에 맞게 적용 
+        // 고블린-> 오크 -> 슬라임-> 고블린
+        // 
+
+
+        public void AttackMonsters(character attacker, monster monster)
+        {
+            for (int i = 0; i < monsters.Length; i++)
+            {
+                // 몬스터가 살아있는 경우
+                if (monsters[i] != null)
+                {
+                    int damage = game_operation.CalculateDamage(attacker, monsters[i]);
+                    monsters[i].TakeDamage(damage);
+
+                    Console.WriteLine($"{attacker.Name}이(가) {monsters[i].Name}에게 {damage}의 피해를 입혔습니다.");
+
+
+                    if (monsters[i].Hp <= 0)
+                    {
+                        Console.WriteLine($"{monsters[i].Name}가 쓰러졌습니다.");
+                        monsters[i] = null;
+                        monsterCount--;
+                    }
+                }
+            }
+        }
+
+
         
+
+
     }
 }
 

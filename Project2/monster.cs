@@ -30,7 +30,7 @@ namespace Project2
         // Arena class에 들어갈 몬스터 수 설정
        
 
-        public int[] monstersTimes = new int[10];
+        public static int[] monstersTimes = new int[10];
         
         public int[] hpData = { 10, 20, 30, 40, 50, 100, 150, 200, 120, 180 };
 
@@ -56,7 +56,7 @@ namespace Project2
         {
             int maxHp = 0;
             int maxIndex = 0;
-
+            
 
 
             for (int i = 0; i < hpData.Length; i++)
@@ -72,7 +72,16 @@ namespace Project2
                 }
                 
             }
+        }
 
+        public void takeDamageMonster(character character)
+        {
+
+        }
+
+        internal void TakeDamage(int damage)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -37,25 +37,6 @@ namespace Project2
             character_hp -= damage;
             if (character_hp < 0) character_hp = 0;
         }
-
-
-        //public void Attack(character attacker monster defender)
-        //{
-        //    int damage = Calculate_Damage(target, Attack_Power);
-        //}
-
-        // 등록된 몬스터들을 순서대로 공격
-        // 인덱스 넘버링에 의해 자동적으로 순서에 맞게 적용 
-        // 고블린-> 오크 -> 슬라임-> 고블린
-        // 전부 다 때리려면 저장된 배열
-
-        public void registerMonsterAttack(character attacker , monster defender)
-        {
-            for (int i = 0; i < defender.hpData[i]; i++)
-            {
-                int damage = game_operation.Calculate_Damage(attacker, defender);
-            }
-        }
     }
 }
 

@@ -20,7 +20,7 @@ namespace Project2
             throw new NotImplementedException();
         }
 
-        public int CalculateDamage(Actor attacker, Actor defender)
+        public static int CalculateDamage(Actor attacker, Actor defender)
         {
             // 데미지 계산
             // attacker, defender
@@ -33,7 +33,6 @@ namespace Project2
             double additionalAttributeDamage = GetAdditionalAttributeDamage(attacker.attribute, defender.attribute);
 
             double damage = basicDamage * additionalAttributeDamage;
-
             int totalDamage = (int)Math.Truncate(damage);
 
             if (totalDamage < 0)
@@ -44,7 +43,7 @@ namespace Project2
             return totalDamage;
         }
 
-        public double GetAdditionalAttributeDamage(Attribute attackAttribute, Attribute defenderAttribute)
+        public static double GetAdditionalAttributeDamage(Attribute attackAttribute, Attribute defenderAttribute)
         {
             if (attackAttribute == Attribute.Fire && defenderAttribute == Attribute.Wind)
                 return 1.5;
