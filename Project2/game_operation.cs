@@ -30,7 +30,7 @@ namespace Project2
 
             int basicDamage = atk - def;
 
-            double additionalAttributeDamage = GetAdditionalAttributeDamage(attacker.attribute, defender.attribute);
+            double additionalAttributeDamage = GetAdditionalAttributeDamage(attacker.Attribute, defender.Attribute);
 
             double damage = basicDamage * additionalAttributeDamage;
             int totalDamage = (int)Math.Truncate(damage);

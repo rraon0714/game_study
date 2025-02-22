@@ -14,7 +14,7 @@ namespace Project2
     public class Arena // 몬스터를 추가했을 때 정해진 배열 값에 따라 등록을 추가 하는 클래스
     {
 
-        int mosterAddSelection;
+        int AddmosterSelection;
 
         //Monster 등록: 상속을 통해 Monster 등록(예: 고블린, 오크, 슬라임) (check)
         //생명력 출력: 생명력이 0이 되면 맨 마지막에 등록된 몬스터 이름을 출력하는 함수 생성 (check)
@@ -34,7 +34,7 @@ namespace Project2
 
         public monster[] monsters;
         public int index;
-        public int monsterCount;
+        public int nowMonsterCount;
         public int lastMonsterName;
 
         public Arena(int monsterCount)
@@ -89,12 +89,12 @@ namespace Project2
         {
             Console.WriteLine("MOSTER를 추가하려면 1.YES 2. NO를 선택해주세요");
             String monsterAddQustionAnswer = Console.ReadLine();
-            if (int.TryParse(monsterAddQustionAnswer, out mosterAddSelection))
+            if (int.TryParse(monsterAddQustionAnswer, out AddmosterSelection))
             {
-                if (mosterAddSelection == 1)
+                if (AddmosterSelection == 1)
                 {
                     Console.WriteLine("몬스터를 추가합니다.");
-                    if (monsterCount < monster.monstersTimes.Length)
+                    if (nowMonsterCount < monster.monstersTimes.Length)
                     {
                         for (int i = 0; i < monster.monstersTimes.Length; i++)
                         {
@@ -126,7 +126,7 @@ namespace Project2
                                 // string aaa = stringArray[0];
 
                                 monster.monstersTimes[i] = new monster(monster.nameData[j], monster.hpData[j], monster.atkData[j], monster.defData[j], monsterAttribute);
-                                monsterCount++;
+                                nowMonsterCount++;
                             }
                         }
                     }
@@ -146,16 +146,16 @@ namespace Project2
                 if (monsters[i].hpData[i] == 0)
                 {
                     monsters[i] = null;
-                    monsterCount -= 1;
+                    nowMonsterCount -= 1;
                 }
             }
-            return monsterCount;
+            return nowMonsterCount;
         }
 
         // 남아있는 몬스터 수 출력
-        public void remainigMonsters(monster monster)
+        public void remainMonsters(monster monster)
         {
-            Console.WriteLine("현재 남은 몬스터의 수는" + $"{monsterCount}입니다.");
+            Console.WriteLine("현재 남은 몬스터의 수는" + $"{nowMonsterCount}입니다.");
 
         }
 
@@ -165,11 +165,11 @@ namespace Project2
         // nameData에 속한 맨마지막에 있는 인덱스 출력
          
 
-        public void lastMonsterNamePrint(monster monster, character character)
+        public void PrintlastMonsterName(monster monster, character character)
         {
                 if (character.character_hp == 0)
                 {
-                    lastMonsterName = monster.monster_nameData.Length - 1;
+                    lastMonsterName = monster.Name.Length - 1;
                 }
                 Console.WriteLine($"마지막 몬스터의 이름은 {lastMonsterName}입니다.");
         }
@@ -198,14 +198,37 @@ namespace Project2
                     {
                         Console.WriteLine($"{monsters[i].Name}가 쓰러졌습니다.");
                         monsters[i] = null;
-                        monsterCount--;
+                        nowMonsterCount--;
                     }
                 }
             }
         }
 
 
-        
+        // 현재 등록된 몬스터들 중 생명력이 가장 높은 몬스터 이름 출력
+        // hpdata 0~9까지 비교 -> 변수 생성
+        // hpdata끼리 비교했을 때 해당하는 name data 인덱스의 이름 출력?
+        // hpdata 비교를 끝내고 인덱스 넘버를 출력 
+        // index number와 nameData 같은 인덱스와 일치
+
+        public void MonsterMaximumHpPrint()
+        {
+            int maxHp = 0;
+            int maxIndex = 0;
+
+            for (int i = 0; i < nowMonsterCount; i++)
+            {
+                if (maxHp < monsters[i].Hp)
+                {
+                    maxHp = monsters[i].Hp;
+                    maxIndex = i;
+                }
+            }
+
+            Console.WriteLine($"현재 Hp가 가장 높은 몬스터 : {monsters[maxIndex].Name}, {monsters[maxIndex].Hp}");
+        }
+
+
 
 
     }

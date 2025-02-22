@@ -107,15 +107,15 @@ class game
             bool isSuccess2 = arena2.AddMonster(monster);
             if (isSuccess2)
             {
-                Console.WriteLine($"{monster.monster_nameData} 몬스터 추가 성공");
+                Console.WriteLine($"{monster.Name} 몬스터 추가 성공");
             }
             else
             {
-                Console.WriteLine($"{monster.monster_nameData} 몬스터 추가 실패");
+                Console.WriteLine($"{monster.Name} 몬스터 추가 실패");
             }
 
 
-            monster.MonsterMaximumHpPrint();
+            arena2.MonsterMaximumHpPrint();
         }
     }
 }

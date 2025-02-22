@@ -12,7 +12,7 @@ namespace Project2
         public int Hp;
         public int Atk;
         public int Def;
-        public Attribute attribute;
+        public Attribute Attribute;
 
 
         public static int attribute_selection(string attributeString)
@@ -76,7 +76,7 @@ namespace Project2
             Console.WriteLine($"생명력은 {Hp}");
             Console.WriteLine($"방어력은 {Def}");
             Console.WriteLine($"공격력은 {Atk}");
-            Console.WriteLine($"속성은 {attribute}");
+            Console.WriteLine($"속성은 {Attribute}");
         }
 
         
