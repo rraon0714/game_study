@@ -34,7 +34,7 @@ namespace Project2
 
         public monster[] monsters;
         public int index;
-        public int nowMonsterCount;
+        public static int nowMonsterCount;
         public int lastMonsterName;
 
         public Arena(int monsterCount)
@@ -47,6 +47,7 @@ namespace Project2
             //monsterAttribute monsterAttribute = (monsterAttribute)random.Next(Enum.GetValues(typeof(monsterAttribute)).Length);
         }
 
+        //몬스터 추가하는 함수
         public bool AddMonster(monster mon) 
         {
             if (monsters.Length <= index)
@@ -84,7 +85,8 @@ namespace Project2
         {
             return monsterAttribute.ToString();
         }
-
+        
+        // 몬스터 생성자 생성 
         public void mosterAdd(monster monster, Attribute monsterAttribute)
         {
             Console.WriteLine("MOSTER를 추가하려면 1.YES 2. NO를 선택해주세요");
@@ -162,8 +164,7 @@ namespace Project2
 
         // 생명력 출력: 캐릭터 생명력이 0이 되면 맨 마지막에 등록된 몬스터 이름을 출력하는 함수 생성
         // 캐릭터 생명력이 0일 경우
-        // nameData에 속한 맨마지막에 있는 인덱스 출력
-         
+        // nameData에 속한 맨마지막에 있는 인덱스 
 
         public void PrintlastMonsterName(monster monster, character character)
         {
@@ -178,17 +179,17 @@ namespace Project2
         // 등록된 몬스터들을 순서대로 공격
         // 인덱스 넘버링에 의해 자동적으로 순서에 맞게 적용 
         // 고블린-> 오크 -> 슬라임-> 고블린
-        // 
+        // 공격하는 함수에 받는 피해량을 같이 출력?
 
 
-        public void AttackMonsters(character attacker, monster monster)
+        public void AttackMonsters(character attacker)
         {
-            for (int i = 0; i < monsters.Length; i++)
+            for (int i = 0; i < nowMonsterCount; i++)
             {
                 // 몬스터가 살아있는 경우
                 if (monsters[i] != null)
                 {
-                    int damage = game_operation.CalculateDamage(attacker, monsters[i]);
+                    int damage = game_operation.CalculateDamage(attacker, monsters[i], i);
                     monsters[i].TakeDamage(damage);
 
                     Console.WriteLine($"{attacker.Name}이(가) {monsters[i].Name}에게 {damage}의 피해를 입혔습니다.");
@@ -227,10 +228,6 @@ namespace Project2
 
             Console.WriteLine($"현재 Hp가 가장 높은 몬스터 : {monsters[maxIndex].Name}, {monsters[maxIndex].Hp}");
         }
-
-
-
-
     }
 }
 

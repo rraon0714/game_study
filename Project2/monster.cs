@@ -37,9 +37,14 @@ namespace Project2
         public string[] nameData = { "고블린", "오크", "슬라임", "monster4", "monster5", "monster6", "monster7", "monster8", "monster9", "monster10" };
 
 
+        //몬스터가 받는 피해
+        //game_operation calculate 데미지 게산을 적용
         public void TakeDamage(int damage)
         {
-            
+            for (int i = 0; i < hpData.Length; i++)
+            {
+                hpData[i] -= damage;
+            }
         }
 
     }

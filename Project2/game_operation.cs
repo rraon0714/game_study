@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,26 +16,28 @@ namespace Project2
         monster monster;
         Boolean gameProgress = false;
 
-        public static int Calculate_Damage(character attacker, monster defender)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static int CalculateDamage(Actor attacker, Actor defender)
+        public static int CalculateDamage(character attacker, monster defender, int monsterIndex)
         {
             // 데미지 계산
             // attacker, defender
             // (때린애 공격력 - 맞은애 방어력) * 속성 상성
             int atk = attacker.Atk;
-            int def = defender.Def;
 
+            // monsterIndex 인수로 -> attackMonsters에 있는 nowMonsterCount에 의해 index 증가
+            int def = defender.defData[monsterIndex];
+
+
+            // (때린애 공격력 - 맞은애 방어력)
             int basicDamage = atk - def;
 
+            //속성에 따른 데미지 적용
             double additionalAttributeDamage = GetAdditionalAttributeDamage(attacker.Attribute, defender.Attribute);
 
+            // (때린애 공격력 - 맞은애 방어력) * 속성 상성
             double damage = basicDamage * additionalAttributeDamage;
             int totalDamage = (int)Math.Truncate(damage);
 
+            //데미지 총합 
             if (totalDamage < 0)
             {
                 totalDamage = 1;

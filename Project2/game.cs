@@ -90,6 +90,7 @@ class game
         //    Console.WriteLine("몬스터 추가 실패");
         //}
 
+        character attacker = new character("주인공", 100, 15, 10, Project2.Attribute.Fire);
 
         int[] hpData = { 10, 20, 30, 40, 50, 100, 150, 200, 120, 180 };
         int[] atkData = { 5, 15, 30, 40, 30, 10, 25, 45, 120, 150 };
@@ -113,9 +114,9 @@ class game
             {
                 Console.WriteLine($"{monster.Name} 몬스터 추가 실패");
             }
-
-
             arena2.MonsterMaximumHpPrint();
+
+            arena2.AttackMonsters(attacker);
         }
     }
 }
